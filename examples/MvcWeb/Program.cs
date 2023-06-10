@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Piranha;
 using Piranha.AspNetCore.Identity.SQLite;
+using Piranha.AspNetCore.Identity.SQLServer;
 using Piranha.AttributeBuilder;
 using Piranha.Data.EF.SQLite;
+using Piranha.Data.EF.SQLServer;
 using Piranha.Manager.Editor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,8 +28,9 @@ builder.AddPiranha(options =>
     options.UseMemoryCache();
 
     var connectionString = builder.Configuration.GetConnectionString("piranha");
-    options.UseEF<SQLiteDb>(db => db.UseSqlite(connectionString));
-    options.UseIdentityWithSeed<IdentitySQLiteDb>(db => db.UseSqlite(connectionString));
+    options.UseEF<SQLServerDb>(db => db.UseSqlServer(connectionString));
+    //options.UseEF<SQLiteDb>(db => db.UseSqlite(connectionString));
+    options.UseIdentityWithSeed<IdentitySQLServerDb>(db => db.UseSqlServer(connectionString));
 
     /**
      * Here you can configure the different permissions

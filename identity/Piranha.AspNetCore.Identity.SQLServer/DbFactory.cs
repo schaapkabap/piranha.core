@@ -30,7 +30,7 @@ public class DbFactory : IDesignTimeDbContextFactory<IdentitySQLServerDb>
     public IdentitySQLServerDb CreateDbContext(string[] args)
     {
         var builder = new DbContextOptionsBuilder<IdentitySQLServerDb>();
-        builder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=piranha.core;Integrated Security=True;MultipleActiveResultSets=True");
+        builder.UseSqlServer("server=localhost;Database=piranha;User id=sa;Password=SomeStrongPwd123;Trusted_Connection=False;TrustServerCertificate=True;");
         return new IdentitySQLServerDb(builder.Options);
     }
 }
