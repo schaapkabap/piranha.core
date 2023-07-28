@@ -1,0 +1,14 @@
+version: "3.6"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    command: /bin/bash /scripts/docker-entrypoint.sh
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - SA_PASSWORD=SomeStrongPwd123
+    volumes:
+      - ./scripts:/scripts
