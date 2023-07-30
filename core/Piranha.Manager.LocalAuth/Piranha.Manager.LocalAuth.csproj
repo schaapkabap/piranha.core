@@ -4,9 +4,6 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\Piranha\Piranha.csproj" />

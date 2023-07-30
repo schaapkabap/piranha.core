@@ -6,17 +6,12 @@
     <Description>Piranha CMS simple security provider for AspNetCore</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
-
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
     <ProjectReference Include="..\Piranha.Manager.LocalAuth\Piranha.Manager.LocalAuth.csproj" />
   </ItemGroup>
 

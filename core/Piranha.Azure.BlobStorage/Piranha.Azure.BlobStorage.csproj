@@ -6,13 +6,9 @@
     <Description>Package for storing uploaded media assets on Azure Blob Storage</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.13.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
     <ProjectReference Include="..\Piranha\Piranha.csproj" />
   </ItemGroup>
 

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -9,9 +10,7 @@
     <None Remove="Dockerfile" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="Dockerfile" />
-  </ItemGroup>
+
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\Piranha\Piranha.csproj" />
