@@ -12,3 +12,22 @@ services:
       - SA_PASSWORD=SomeStrongPwd123
     volumes:
       - ./scripts:/scripts
+      - './mssqldata:/var/opt/mssql/data'
+    networks:
+      - default
+  piranah:
+    build:
+      context: ../../../.
+      dockerfile: examples/MvcWeb/compose/Dockerfile    
+    container_name: 'piranah_container'
+    #image: piranah.core:latest
+    ports:
+      - 57796:57796
+    environment:
+      - ConnectionStrings:piranha=server=db;Database=piranha;User id=sa;Password=SomeStrongPwd123;Trusted_Connection=False;TrustServerCertificate=True;
+      - ASPNETCORE_URLS=http://+:57796
+      - ASPNETCORE_HTTPS_PORT=57796 
+    networks:
+      - default
+    links:
+      - db   

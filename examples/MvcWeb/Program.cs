@@ -6,8 +6,17 @@ using Piranha.AttributeBuilder;
 using Piranha.Data.EF.SQLite;
 using Piranha.Data.EF.SQLServer;
 using Piranha.Manager.Editor;
+using SixLabors.ImageSharp;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+IConfigurationRoot Configuration = new ConfigurationBuilder()
+               .SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
+               .AddJsonFile("appsettings.json")
+               .AddEnvironmentVariables()
+               .AddCommandLine(args)
+               .Build();
 
 builder.AddPiranha(options =>
 {
@@ -27,7 +36,7 @@ builder.AddPiranha(options =>
     options.UseTinyMCE();
     options.UseMemoryCache();
 
-    var connectionString = builder.Configuration.GetConnectionString("piranha");
+    var connectionString = Configuration.GetConnectionString("piranha");
     options.UseEF<SQLServerDb>(db => db.UseSqlServer(connectionString));
     //options.UseEF<SQLiteDb>(db => db.UseSqlite(connectionString));
     options.UseIdentityWithSeed<IdentitySQLServerDb>(db => db.UseSqlServer(connectionString));
